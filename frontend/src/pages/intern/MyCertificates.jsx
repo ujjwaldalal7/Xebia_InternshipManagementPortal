@@ -57,7 +57,7 @@ const MyCertificates = () => {
                   <span className="font-medium">Issued:</span> {new Date(cert.issueDate).toLocaleDateString()}
                 </p>
                 
-                <a href={cert.certificateUrl} target="_blank" rel="noopener noreferrer" className="block w-full">
+                <a href={cert.certificateUrl?.url || '#'} target="_blank" rel="noopener noreferrer" className="block w-full">
                   <Button className="w-full flex items-center justify-center gap-2" variant="outline">
                     <Download size={18} /> View / Download
                   </Button>

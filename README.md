@@ -1,4 +1,4 @@
----
+# Internship Management Portal
 
 > **Internship Management Portal**
 > A comprehensive, full-stack application to streamline the internship lifecycle.

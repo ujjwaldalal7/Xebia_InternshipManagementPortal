@@ -9,6 +9,7 @@ import { Card, CardBody, CardHeader, CardTitle } from '../../components/common/C
 import { useAuth } from '../../context/AuthContext';
 import Button from '../../components/common/Button/Button';
 import { Briefcase, Send } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 /**
  * BrowseInternships Component
@@ -53,9 +54,10 @@ const BrowseInternships = () => {
   const handleApply = async (internshipId) => {
     try {
       await api.post('/applications', { internshipId, coverLetter: 'I am highly interested in this role.' });
-      alert('Application submitted successfully!');
+      toast.success('Application submitted successfully!');
+      fetchData(); // Refresh to remove applied internship
     } catch (error) {
-      alert(error.response?.data?.message || 'Failed to apply.');
+      toast.error(error.response?.data?.message || 'Failed to apply.');
     }
   };
 

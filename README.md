@@ -85,6 +85,88 @@ flowchart TD
     L --> M[Intern Downloads Certificate]
 ```
 
+**Role-based entry flow:**
+
+```mermaid
+flowchart LR
+    S[Sign in / register] --> R{Role?}
+    R -->|Pending| PA[Pending Approval Room]
+    R -->|Intern| ID[Intern Dashboard]
+    R -->|Mentor| MD[Mentor Workspace]
+    R -->|Admin| AD[Admin Portal]
+    PA -.->|Admin Approves| ID
+    ID --> BI[Browse Internships]
+    ID --> TM[Task Management]
+    MD --> MI[Manage Internships]
+    MD --> RA[Review Applications]
+    AD --> UM[User Management]
+```
+
+---
+
+## Wireframes
+Low-fidelity layouts of the primary screens (these map 1:1 to the built pages).
+
+**Intern Dashboard**
+```text
++--------------------------------------------------------------+
+|  Internship Portal      Dashboard  Browse  My Tasks  ⎋       |
++--------------------------------------------------------------+
+|  ( 🙂 )  Hi, Intern 👋                        [ Profile ⚙ ]  |
+|          Applied to 3 Internships · 2 Tasks Pending          |
++----------------------------------+---------------------------+
+|  MY INTERNSHIPS                  |  OPEN INTERNSHIPS         |
+|  Full Stack Engineer             |  Cloud Engineer           |
+|  [ Xebia ] [ Accepted ]          |  [ Amazon ] [ Apply ]     |
++----------------------------------+---------------------------+
+```
+
+**Mentor — Review Queue**
+```text
++--------------------------------------------------------------+
+|  Mentor Workspace        ( Internships | Applications )      |
++--------------------------------------------------------------+
+|  ( 🙂 ) Candidate applied for "Full Stack Engineer"          |
+|  Link: [ View Candidate Resume ]                             |
+|  Cover Letter: I am highly interested in this role.          |
+|                  [ Reject ] [ Accept ]                       |
++--------------------------------------------------------------+
+```
+
+---
+
+## MVP definition
+The MVP is the smallest product that proves the core hypothesis: *a unified, role-based platform can drastically improve the efficiency of corporate internship programs.* Everything required for that loop is **built in this repo**.
+
+**In scope (built):**
+- Email/password auth with role-based routing (Admin, Mentor, Intern, Pending).
+- Internship catalog with creation, updating, and applying.
+- Full application lifecycle: submit → mentor review → accept/reject.
+- Task management engine: assign tasks, evaluate work.
+- Dynamic PDF Certificate generation for completed internships.
+- Admin dashboard for user role assignments and platform oversight.
+- Cloudinary integration for resume and profile picture uploads.
+
+**Explicitly out of scope (future):**
+- Real-time chat between mentors and interns.
+- Complex analytics graphs (bar charts/pie charts).
+- Auto-graded technical assessments.
+- Email or SMS notifications.
+
+**Success metrics to validate the MVP:**
+- **Activation:** % of pending users successfully assigned a role within 24h.
+- **Engagement:** Daily active interns submitting tasks.
+- **Quality/throughput:** Application-to-decision time by mentors.
+
+---
+
+## Mapping to the evaluation parameters
+- **Product thinking** — Clear problem → insight → solution; a tightly scoped MVP with explicit out-of-scope cuts and measurable success metrics.
+- **Creativity** — Using dynamic PDF generation for completion certificates and seamless browser-native resume viewing via Cloudinary.
+- **Communication** — This README: roles, features, diagrams, wireframes, and MVP laid out for a reader to grasp quickly.
+- **Collaboration** — The mentor↔intern loop is the product's heart; task assignment and evaluation are first-class features.
+- **Leadership** — Admin role management gives a program owner the levers to securely run, grow, and unblock the platform.
+
 ---
 
 ## 3. Project structure

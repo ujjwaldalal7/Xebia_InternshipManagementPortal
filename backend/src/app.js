@@ -22,7 +22,12 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(helmet());
 app.use(cors({
-  origin: [process.env.CLIENT_URL || 'http://localhost:5173', 'http://localhost:5174'],
+  origin: [
+    process.env.CLIENT_URL ? process.env.CLIENT_URL.replace(/\/$/, '') : null,
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'https://internships-management-portal.vercel.app'
+  ].filter(Boolean),
   credentials: true,
 }));
 
